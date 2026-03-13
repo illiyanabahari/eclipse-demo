@@ -1,0 +1,11 @@
+1771981492391	Delete element
+1771981536979	Move 'views' to 'webapp'
+1771981541920	Delete element
+1771981813273	Delete element
+1771981985476	Delete element
+1771981990653	Delete element
+1771985968399	Move 'views' to 'WEB-INF'
+1771986084671	Move 'dispatcher-servlet.xml' to 'WEB-INF'
+1771986092069	Move 'applicationContext.xml' to 'WEB-INF'
+1771986097113	Move 'web.xml' to 'WEB-INF'
+1771992739956	Rename resource 'layout'

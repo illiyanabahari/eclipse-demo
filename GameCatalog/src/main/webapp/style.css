@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #1b1b2f, #0f0f1a);
+    color: #ffffff;
+}
+
+a {
+    color: #00f5ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff2edf;
+}
+
+.navbar {
+    background: #0b0b14;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 20px #00f5ff33;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    color: #ff2edf;
+}
+
+.container {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.card {
+    background: linear-gradient(145deg, #1a1a2e, #10101d);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px #00f5ff22;
+    margin-bottom: 25px;
+}
+
+.btn {
+    background: linear-gradient(90deg, #ff2edf, #00f5ff);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+input, textarea, select {
+    width: 100%;
+    background: #0f0f1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.game-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #00f5ff;
+    font-size: 18px;
+}
+
+.badge {
+    background: #ff2edf;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    opacity: 0.6;
+}
+.game-photo {
+    width: 10px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00f5ff55;
+}
+

@@ -1,0 +1,5 @@
+package com.abc.productcategory.repository;
+
+public class ProductRepository {
+
+}

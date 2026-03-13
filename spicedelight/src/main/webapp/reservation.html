@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservation</title>
+	<link rel="stylesheet" href="appstyle.css">
+</head>
+
+
+
+</head>
+<body>
+	<p><a href="index.html">Back to Homepage</a></p>
+
+    <h1>Spice Delight Reservation Form</h1>
+
+    <form action="submit.html" method="get">
+        <label>Full Name:</label>
+        <input type="text" name="fullname" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <br><br>
+
+        <label>Date of Reservation:</label>
+        <input type="date" name="reservation_date" required>
+        <br><br>
+
+        <label>Time of Reservation:</label>
+        <input type="time" name="reservation_time" required>
+        <br><br>
+
+        <label>Number of Guests:</label>
+        <input type="number" name="guests" min="1" required>
+        <br><br>
+
+        <label>Special Requests:</label>
+        <textarea name="special_request" rows="4" cols="50" placeholder="Any special requests?"></textarea>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

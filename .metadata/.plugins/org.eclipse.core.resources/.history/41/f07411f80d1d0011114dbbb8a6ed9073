@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    environment {
+        TOMCAT_HOME = 'C:\\apache-tomcat-10'
+        WAR_NAME = 'demo-app.war'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: https://github.com/illiyanabahari/demo-app.git
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Run Maven clean package
+                bat 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Stop Tomcat
+                bat "${env.TOMCAT_HOME}\\bin\\shutdown.bat"
+
+                // Copy WAR
+                bat "copy target\\${env.WAR_NAME} ${env.TOMCAT_HOME}\\webapps\\${env.WAR_NAME}"
+
+                // Start Tomcat
+                bat "${env.TOMCAT_HOME}\\bin\\startup.bat"
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Deployment completed successfully!'
+        }
+        failure {
+            echo 'Something went wrong...'
+        }
+    }
+}

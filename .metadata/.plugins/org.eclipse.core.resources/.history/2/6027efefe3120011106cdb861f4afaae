@@ -1,0 +1,5 @@
+package com.abc.productcategory.entities;
+
+public class Category {
+
+}

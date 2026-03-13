@@ -1,0 +1,52 @@
+package com.test.servlet;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.cloud.firestore.Firestore;
+import com.google.firebase.cloud.FirestoreClient;
+import com.test.dao.FirebaseInit;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/addUser")
+public class addUserServlet extends HttpServlet {
+
+    @Override
+    public void init() throws ServletException {
+        FirebaseInit.init();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        req.getRequestDispatcher("/WEB-INF/view/addUser.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        String username = req.getParameter("username");
+        String email = req.getParameter("email");
+
+        Map<String, Object> user = new HashMap<>();
+        user.put("username", username);
+        user.put("email", email);
+
+        try {
+            Firestore db = FirestoreClient.getFirestore();
+            db.collection("users").add(user);
+            resp.sendRedirect("success.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+            resp.sendRedirect("error.jsp");
+        }
+    }
+}

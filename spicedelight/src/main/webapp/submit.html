@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation Submitted</title>
+    <link rel="stylesheet" href="appstyle.css">
+</head>
+<body>
+
+    <h1>Thank You for Your Reservation!</h1>
+    <p>Your reservation details are shown below:</p>
+
+    <div id="reservation-details"></div>
+
+    <p><a href="index.html">Back to Homepage</a></p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        const details = `
+            <p><strong>Full Name:</strong> ${params.get("fullname")}</p>
+            <p><strong>Email:</strong> ${params.get("email")}</p>
+            <p><strong>Date:</strong> ${params.get("reservation_date")}</p>
+            <p><strong>Time:</strong> ${params.get("reservation_time")}</p>
+            <p><strong>Guests:</strong> ${params.get("guests")}</p>
+            <p><strong>Special Requests:</strong> ${params.get("special_request") || "None"}</p>
+        `;
+
+        document.getElementById("reservation-details").innerHTML = details;
+    </script>
+
+</body>
+</html>

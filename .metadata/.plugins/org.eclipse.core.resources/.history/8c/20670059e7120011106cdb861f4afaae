@@ -1,0 +1,79 @@
+package com.abc.productcategory.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.abc.productcategory.entities.Category;
+import com.abc.productcategory.repository.ProductRepository;
+
+
+@Controller
+@RequestMapping("/products")
+public class ProductController {
+
+		private final ProductRepository productRepository;
+		
+		public ProductController(ProductRepository productRepository) {
+			this.productRepository=productRepository;
+		}
+		
+		@GetMapping
+		public String index(@RequestParam(name = "q", required = false) String q,
+	            Model model) {
+
+			if (q != null && !q.trim().isEmpty()) {
+				String keyword = q.trim();
+				model.addAttribute("products", productRepository.findByProductNameContainingIgnoreCase(keyword));
+				model.addAttribute("q", keyword);
+			}	 else {
+				model.addAttribute("products", productRepository.findAll());
+				model.addAttribute("q", "");
+			}
+
+			model.addAttribute("content", "/WEB-INF/views/products/index.jsp");
+			return "layouts/main";
+		}
+		
+		  @GetMapping("/new")
+		    public String createForm(Model model) {
+		        model.addAttribute("products", new Category());
+		        model.addAttribute("content", "/WEB-INF/views/products/form.jsp");
+		        return "layouts/main";
+		    }
+
+		@PostMapping("/save")
+	    public String save(@ModelAttribute Category category) {
+
+	        boolean isNew = (category.getProductId() == null);
+
+	        Category saved = productRepository.save(category);
+
+
+	        return "redirect:/products";
+	    }
+		
+		 @GetMapping("/edit/{id}")
+		    public String edit(@PathVariable("id") Integer id, Model model) {
+		        Category category = productRepository.findById(id)
+		                .orElseThrow(() -> new RuntimeException("Product not found"));
+		        model.addAttribute("customer", category);
+		        model.addAttribute("content", "/WEB-INF/views/products/form.jsp");
+		        return "layouts/main";
+		    }
+		 
+		 @GetMapping("/delete/{id}")
+		    public String delete(@PathVariable("id") Integer id) {
+			 productRepository.deleteById(id);
+		        return "redirect:/products";
+		    }
+
+
+	}
+
+}

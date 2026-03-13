@@ -1,0 +1,63 @@
+package com.demo.servlet;
+
+import com.demo.util.DBUtil;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+@WebServlet("/api/login")
+public class LoginServlet extends HttpServlet {
+
+   private static final long serialVersionUID = 1L;
+
+   @Override
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+
+       response.setContentType("application/json");
+       response.setCharacterEncoding("UTF-8");
+
+       String username = request.getParameter("username");
+       String password = request.getParameter("password");
+
+       PrintWriter out = response.getWriter();
+
+       if (username == null || username.isBlank() || password == null || password.isBlank()) {
+           out.write("{\"success\":false,\"message\":\"Username and password are required\"}");
+           return;
+       }
+
+       String sql = "SELECT full_name FROM users WHERE username = ? AND password = ?";
+
+       try (
+               Connection connection = DBUtil.getConnection();
+               PreparedStatement preparedStatement = connection.prepareStatement(sql)
+       ) {
+           preparedStatement.setString(1, username);
+           preparedStatement.setString(2, password);
+
+           try (ResultSet resultSet = preparedStatement.executeQuery()) {
+               if (resultSet.next()) {
+                   String fullName = resultSet.getString("full_name");
+
+                   String safeFullName = fullName.replace("\"", "\\\"");
+                   out.write("{\"success\":true,\"fullName\":\"" + safeFullName + "\"}");
+               } else {
+                   out.write("{\"success\":false,\"message\":\"Invalid username or password\"}");
+               }
+           }
+
+       } catch (Exception ex) {
+           ex.printStackTrace();
+           out.write("{\"success\":false,\"message\":\"Server error occurred\"}");
+       }
+   }
+}

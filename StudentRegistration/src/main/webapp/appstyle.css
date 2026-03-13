@@ -1,0 +1,84 @@
+/* ---------------- Body Styling ---------------- */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------- Headings ---------------- */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 40px;
+}
+
+/* ---------------- Form Styling ---------------- */
+form {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------- Input Fields ---------------- */
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* ---------------- Submit Button ---------------- */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* ---------------- Result Page Container ---------------- */
+.result-container {
+    max-width: 500px;
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* ---------------- Success & Error Messages ---------------- */
+.success {
+    color: #28a745;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+/* ---------------- Paragraph Styling ---------------- */
+p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+}

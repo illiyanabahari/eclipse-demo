@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo App</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Hello, this is your demo Spring Boot WAR!</h1>
+    <p>Update this HTML, rebuild WAR, and deploy to Tomcat.</p>
+</body>
+</html>

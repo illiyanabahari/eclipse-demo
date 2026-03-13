@@ -1,0 +1,32 @@
+
+     body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFF0F5; /* Lavender blush */
+            color: #555; /* Soft gray text */
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #FFB6C1; /* Light pink */
+        }
+
+        p {
+            color: #6B8E23; /* Soft green */
+            font-size: 18px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #ADD8E6; /* Light blue */
+            color: #333;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #87CEFA; /* Slightly darker blue on hover */
+        }
